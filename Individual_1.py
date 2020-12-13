@@ -22,7 +22,7 @@ if __name__ == '__main__':
         elif command == 'add':
             name = input("Фамилия и инициалы? ")
             group = input("Номер группы? ")
-            marks = input("Успеваемость? ")
+            marks = list(map(int, input('Введите оценки').split()))
 
             student = {
                 'name': name,
@@ -59,17 +59,17 @@ if __name__ == '__main__':
                         idx,
                         student.get('name', ''),
                         student.get('group', ''),
-                        student.get('marks', 0)
+                        student.get('marks[0]', '')
                     )
                 )
 
             print(line)
 
-        elif command.startswith('select '):
+        elif command.startswith('select'):
 
             count = 0
             for student in students:
-                if student.get('marks', '') >= 4:
+                if sum(student.get('marks', '')) / len(marks) >= 4:
                     count += 1
                     print(
                         '{:>4}: {}'.format(count, student.get('name', ''))
